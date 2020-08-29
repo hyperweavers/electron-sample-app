@@ -1,5 +1,16 @@
 {
-  "branches": [ "stable", "+([0-9])?(.{+([0-9]),x}).x" ],
+  "branches": [
+    "stable",
+    "+([0-9])?(.{+([0-9]),x}).x",
+    {
+      "name": "alpha",
+      "prerelease": true
+    },
+    {
+      "name": "beta",
+      "prerelease": true
+    }
+  ],
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
@@ -14,23 +25,23 @@
       "assets": [
         {
           "path": "out/make/**/*.exe",
-          "name": "App-${nextRelease.gitTag}.exe"
+          "name": "App-${nextRelease.version}.exe"
         },
         {
           "path": "out/make/**/*.deb",
-          "name": "App-${nextRelease.gitTag}.deb"
+          "name": "App-${nextRelease.version}.deb"
         },
         {
           "path": "out/make/**/*.rpm",
-          "name": "App-${nextRelease.gitTag}.rpm"
+          "name": "App-${nextRelease.version}.rpm"
         },
         {
           "path": "out/make/**/*.dmg",
-          "name": "App-${nextRelease.gitTag}.dmg"
+          "name": "App-${nextRelease.version}.dmg"
         },
         {
           "path": "out/make/**/*.zip",
-          "name": "App-${nextRelease.gitTag}.zip"
+          "name": "App-${nextRelease.version}.zip"
         }
       ]
     }]
