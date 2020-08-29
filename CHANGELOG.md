@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/hyperweavers/electron-sample-app/compare/v1.4.0...v1.4.1) (2020-08-29)
+
+
+### Bug Fixes
+
+* add author and committer environment variables to ci ([24469fa](https://github.com/hyperweavers/electron-sample-app/commit/24469fa5cb9b9b7a32bb1df3ba57c9fc18337fcb))
+
 # [1.4.0](https://github.com/hyperweavers/electron-sample-app/compare/v1.3.0...v1.4.0) (2020-08-29)
 
 
