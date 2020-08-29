@@ -4,10 +4,14 @@ on:
   push:
     branches:
       - stable
+      - alpha
+      - beta
 
   pull_request:
     branches:
       - stable
+      - alpha
+      - beta
 
 jobs:
   build:
