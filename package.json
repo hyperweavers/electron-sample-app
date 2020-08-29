@@ -1,7 +1,7 @@
 {
   "name": "electron-sample-app",
   "productName": "electron-sample-app",
-  "version": "0.0.0-development",
+  "version": "1.1.0",
   "description": "My Electron application description",
   "main": ".webpack/main",
   "scripts": {
