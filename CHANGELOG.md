@@ -1,5 +1,12 @@
 # Changelog
 
+# [1.3.0](https://github.com/hyperweavers/electron-sample-app/compare/v1.2.0...v1.3.0) (2020-08-29)
+
+
+### Features
+
+* update release artifacts name in semantic-release config ([c9835dc](https://github.com/hyperweavers/electron-sample-app/commit/c9835dcd624716a682a28f0a949141988116701f))
+
 # [1.2.0](https://github.com/hyperweavers/electron-sample-app/compare/v1.1.0...v1.2.0) (2020-08-29)
 
 
