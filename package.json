@@ -1,7 +1,7 @@
 {
   "name": "electron-sample-app",
   "productName": "electron-sample-app",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "My Electron application description",
   "main": ".webpack/main",
   "scripts": {
@@ -9,7 +9,8 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "eslint --ext .ts ."
+    "lint": "eslint --ext .ts .",
+    "semantic-release": "semantic-release"
   },
   "keywords": [],
   "author": {
@@ -80,9 +81,14 @@
     "node-loader": "^1.0.1",
     "style-loader": "^1.2.1",
     "ts-loader": "^8.0.2",
-    "typescript": "^4.0.2"
+    "typescript": "^4.0.2",
+    "semantic-release": "^17.1.1"
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hyperweavers/electron-sample-app.git"
   }
 }
