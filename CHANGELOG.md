@@ -1,3 +1,12 @@
+# Changelog
+
+# [1.2.0](https://github.com/hyperweavers/electron-sample-app/compare/v1.1.0...v1.2.0) (2020-08-29)
+
+
+### Features
+
+* rename homepage title ([e384b48](https://github.com/hyperweavers/electron-sample-app/commit/e384b48d36ba5c99dea2960d4832ec178514e855))
+
 Changelog
 
 # [1.1.0](https://github.com/hyperweavers/electron-sample-app/compare/v1.0.0...v1.1.0) (2020-08-29)
