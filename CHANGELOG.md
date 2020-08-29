@@ -1,5 +1,12 @@
 # Changelog
 
+# [1.4.0-alpha.2](https://github.com/hyperweavers/electron-sample-app/compare/v1.4.0-alpha.1...v1.4.0-alpha.2) (2020-08-29)
+
+
+### Bug Fixes
+
+* change github token environment variable in ci ([83052b2](https://github.com/hyperweavers/electron-sample-app/commit/83052b223e8ae9f2e095ab78bb466a61635bb669))
+
 # [1.4.0-alpha.1](https://github.com/hyperweavers/electron-sample-app/compare/v1.3.0...v1.4.0-alpha.1) (2020-08-29)
 
 
