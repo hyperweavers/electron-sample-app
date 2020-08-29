@@ -3,13 +3,20 @@
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
+    ["@semantic-release/changelog", {
+      "changelogTitle": "# Changelog"
+    }],
+    "@semantic-release/git",
     ["@semantic-release/npm", {
       "npmPublish": false
     }],
-    "@semantic-release/github",
-    ["@semantic-release/changelog", {
-      "changelogTitle": "Changelog"
-    }],
-    "@semantic-release/git"
+    ["@semantic-release/github", {
+      "assets": [
+        {
+          "path": "out/make/**/*.(exe|deb|rpm|dmg|zip)",
+          "name": "App-${nextRelease.version}"
+        }
+      ]
+    }]
   ]
 }
