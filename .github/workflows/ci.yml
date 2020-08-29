@@ -3,11 +3,11 @@ name: CI
 on:
   push:
     branches:
-      - master
+      - stable
 
   pull_request:
     branches:
-      - '**'
+      - stable
 
 jobs:
   build:
