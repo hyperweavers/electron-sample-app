@@ -55,13 +55,15 @@ jobs:
       - name: Build application
         run: npm run make
 
-      - name: Release
+      - name: Configure GPG Key
+        env:
+          GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
+        run: |
+          mkdir -p ~/.gnupg/
+          printf "$GPG_SIGNING_KEY" | base64 --decode > ~/.gnupg/private.key
+          gpg --import ~/.gnupg/private.key
+
+      - name: Release application
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: npx semantic-release
-
-      # - name: Upload artifacts
-      #   uses: actions/upload-artifact@v2
-      #   with:
-      #     name: ${{ matrix.node_version }}-OS-${{ matrix.os }}
-      #     path: out/make
