@@ -66,4 +66,8 @@ jobs:
       - name: Release application
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GIT_AUTHOR_NAME: Kesavamoorthi Subramanian
+          GIT_AUTHOR_EMAIL: k7moorthi@gmail.com
+          GIT_COMMITTER_NAME: Kesavamoorthi Subramanian
+          GIT_COMMITTER_EMAIL: k7moorthi@gmail.com
         run: npx semantic-release
