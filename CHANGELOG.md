@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.1](https://github.com/hyperweavers/electron-sample-app/compare/v1.7.0...v1.7.1) (2020-08-30)
+
+
+### Bug Fixes
+
+* remove windows from ci build ([c21f287](https://github.com/hyperweavers/electron-sample-app/commit/c21f287788141df9b87d11b4fe49f08165ff0ea6))
+
 # [1.7.0](https://github.com/hyperweavers/electron-sample-app/compare/v1.6.7...v1.7.0) (2020-08-30)
 
 
