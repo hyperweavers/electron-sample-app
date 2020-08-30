@@ -15,7 +15,8 @@ jobs:
     strategy:
       matrix:
         node_version: [ 12.x ]
-        os: [ ubuntu-latest, windows-latest, macos-latest ]
+        os: [ ubuntu-latest]
+        #, windows-latest, macos-latest ]
 
     steps:
       - name: Checkout branch
@@ -98,6 +99,10 @@ jobs:
         if: ${{ success() }}
         with:
           name: packages
+          path: ./downloads
+
+      - name: Display structure of downloaded files
+        run: ls -R
 
       - name: Configure GPG Key
         env:
