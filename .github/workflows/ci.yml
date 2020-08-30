@@ -48,13 +48,13 @@ jobs:
         run: |
           npm run make
           pwd
-          ls -R
 
       - name: Upload build artifact(s)
         uses: actions/upload-artifact@v2
         if: ${{ success() }}
         with:
           path: ./out/make/**/*.(exe|deb|rpm|dmg|zip)
+        run: pwd
 
   release:
     if: ${{ success() }}
