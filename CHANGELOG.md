@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.6](https://github.com/hyperweavers/electron-sample-app/compare/v1.6.5...v1.6.6) (2020-08-30)
+
+
+### Bug Fixes
+
+* run ci after removing npm token secret ([466b8d5](https://github.com/hyperweavers/electron-sample-app/commit/466b8d5d7f475bc9cad304fadb6ed5e7bf101756))
+
 ## [1.6.5](https://github.com/hyperweavers/electron-sample-app/compare/v1.6.4...v1.6.5) (2020-08-30)
 
 
