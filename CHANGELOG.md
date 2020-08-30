@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.4](https://github.com/hyperweavers/electron-sample-app/compare/v1.8.3...v1.8.4) (2020-08-30)
+
+
+### Bug Fixes
+
+* remove directory listing in ci ([b1979b2](https://github.com/hyperweavers/electron-sample-app/commit/b1979b2022530b5ad73c6f5106eabd6ca541b4cb))
+
 ## [1.8.3](https://github.com/hyperweavers/electron-sample-app/compare/v1.8.2...v1.8.3) (2020-08-30)
 
 
