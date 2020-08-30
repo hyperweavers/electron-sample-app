@@ -1,5 +1,24 @@
 # Changelog
 
+# [1.8.0](https://github.com/hyperweavers/electron-sample-app/compare/v1.7.1...v1.8.0) (2020-08-30)
+
+
+### Bug Fixes
+
+* add node modules for release job in ci ([ac67921](https://github.com/hyperweavers/electron-sample-app/commit/ac67921eb4093676ab7d2dc9526247a6cb351da7))
+* checkout code for release job in ci ([2512424](https://github.com/hyperweavers/electron-sample-app/commit/25124248293b4fba63dbe2507a016e51cac29cfc))
+* remove directory listing in ci ([e835848](https://github.com/hyperweavers/electron-sample-app/commit/e83584890711c85ce71442d5d69a59393088d30c))
+* remove regexp in ci artifact upload ([38933cc](https://github.com/hyperweavers/electron-sample-app/commit/38933cce8545b6ed41a0e500e78064426bb177a0))
+* update upload and download artifact paths in ci ([b796491](https://github.com/hyperweavers/electron-sample-app/commit/b796491855ff06ee0f4f6ad3d64fd9e860cea0c4))
+* upload and download artifacts in ci ([bbcee13](https://github.com/hyperweavers/electron-sample-app/commit/bbcee13d16fc8b00a1a9b2df9b72a2810ed723b2))
+* use ubuntu for release job in ci ([0803426](https://github.com/hyperweavers/electron-sample-app/commit/0803426140058273722c7cd2aae890ef62507690))
+* verify artifact upload in ci ([783bfa1](https://github.com/hyperweavers/electron-sample-app/commit/783bfa1d182cb37f05f82ac428745d712c611c6f))
+
+
+### Features
+
+* enable release in ci ([8e1a94e](https://github.com/hyperweavers/electron-sample-app/commit/8e1a94e1253799d378516cb30f9971c67f9a3344))
+
 ## [1.7.1](https://github.com/hyperweavers/electron-sample-app/compare/v1.7.0...v1.7.1) (2020-08-30)
 
 
