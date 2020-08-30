@@ -1,5 +1,17 @@
 # Changelog
 
+# [1.5.0](https://github.com/hyperweavers/electron-sample-app/compare/v1.4.2...v1.5.0) (2020-08-30)
+
+
+### Features
+
+* format package.json ([f8acd71](https://github.com/hyperweavers/electron-sample-app/commit/f8acd71130b54418c3b69829a3df5a226a9cff5c))
+
+
+### Reverts
+
+* fix: use github provided token instead of auto generated one ([62f61f2](https://github.com/hyperweavers/electron-sample-app/commit/62f61f231709844ad6dd20ddaf4cd20488261731))
+
 ## [1.4.2](https://github.com/hyperweavers/electron-sample-app/compare/v1.4.1...v1.4.2) (2020-08-30)
 
 
