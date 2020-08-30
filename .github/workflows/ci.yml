@@ -9,12 +9,13 @@ on:
 
 jobs:
   build:
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
     runs-on: ${{ matrix.os }}
     timeout-minutes: 10
     strategy:
       matrix:
         node_version: [ 12.x ]
-        os: [ ubuntu-latest, macos-latest ]
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
 
     steps:
       - name: Checkout branch
@@ -45,21 +46,46 @@ jobs:
       - name: Build application
         run: npm run make
 
-      - name: Configure GPG Key
-        env:
-          GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
-        run: |
-          mkdir -p ~/.gnupg/
-          printf "$GPG_SIGNING_KEY" | base64 --decode > ~/.gnupg/private.key
-          gpg --import ~/.gnupg/private.key
+      - name: Upload build artifact(s)
+        uses: actions/upload-artifact@v2
+        if: ${{ success() }}
+        with:
+          path: out/make/**/*.(exe|deb|rpm|dmg|zip)
 
-      - name: Release application
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          GIT_AUTHOR_NAME: Kesavamoorthi Subramanian
-          GIT_AUTHOR_EMAIL: k7moorthi@gmail.com
-          GIT_COMMITTER_NAME: Kesavamoorthi Subramanian
-          GIT_COMMITTER_EMAIL: k7moorthi@gmail.com
-        run: |
-          git config commit.gpgsign true
-          npx semantic-release
+  release:
+    if: ${{ success() }}
+    needs: build
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 5
+    strategy:
+      matrix:
+        node_version: [ 12.x ]
+
+    steps:
+      - name: Download build artifact(s)
+        uses: actions/download-artifact@v2
+        if: ${{ success() }}
+        with:
+          path: out/make/**/*.(exe|deb|rpm|dmg|zip)
+
+      - name: Display structure of downloaded files
+        run: ls -R
+
+      # - name: Configure GPG Key
+      #   env:
+      #     GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
+      #   run: |
+      #     mkdir -p ~/.gnupg/
+      #     printf "$GPG_SIGNING_KEY" | base64 --decode > ~/.gnupg/private.key
+      #     gpg --import ~/.gnupg/private.key
+
+      # - name: Release application
+      #   env:
+      #     GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      #     GIT_AUTHOR_NAME: Kesavamoorthi Subramanian
+      #     GIT_AUTHOR_EMAIL: k7moorthi@gmail.com
+      #     GIT_COMMITTER_NAME: Kesavamoorthi Subramanian
+      #     GIT_COMMITTER_EMAIL: k7moorthi@gmail.com
+      #   run: |
+      #     git config commit.gpgsign true
+      #     npx semantic-release
