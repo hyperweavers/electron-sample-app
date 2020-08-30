@@ -50,7 +50,7 @@ jobs:
         uses: actions/upload-artifact@v2
         if: ${{ success() }}
         with:
-          path: out/make/**/*.(exe|deb|rpm|dmg|zip)
+          path: ./out/make/**/*.(exe|deb|rpm|dmg|zip)
 
   release:
     if: ${{ success() }}
@@ -65,8 +65,6 @@ jobs:
       - name: Download build artifact(s)
         uses: actions/download-artifact@v2
         if: ${{ success() }}
-        with:
-          path: out/make/**/*.(exe|deb|rpm|dmg|zip)
 
       - name: Display structure of downloaded files
         run: ls -R
