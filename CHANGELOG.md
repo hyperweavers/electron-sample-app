@@ -1,5 +1,12 @@
 # Changelog
 
+# [1.7.0](https://github.com/hyperweavers/electron-sample-app/compare/v1.6.7...v1.7.0) (2020-08-30)
+
+
+### Features
+
+* add mac and windows targets to ci ([2c27aa2](https://github.com/hyperweavers/electron-sample-app/commit/2c27aa28733c0eb0cbefea73867014bb1929259e))
+
 ## [1.6.7](https://github.com/hyperweavers/electron-sample-app/compare/v1.6.6...v1.6.7) (2020-08-30)
 
 

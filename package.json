@@ -1,7 +1,7 @@
 {
   "name": "electron-sample-app",
   "productName": "electron-sample-app",
-  "version": "1.6.7",
+  "version": "1.7.0",
   "description": "My Electron application description",
   "main": ".webpack/main",
   "scripts": {
@@ -38,7 +38,9 @@
         },
         {
           "name": "@electron-forge/maker-zip",
-          "platforms": [ "darwin" ]
+          "platforms": [
+            "darwin"
+          ]
         }
       ],
       "plugins": [
