@@ -53,8 +53,7 @@ jobs:
         uses: actions/upload-artifact@v2
         if: ${{ success() }}
         with:
-          path: ./out/make/**/*.(exe|deb|rpm|dmg|zip)
-        run: pwd
+          path: ./out/make/**/*.deb
 
   release:
     if: ${{ success() }}
