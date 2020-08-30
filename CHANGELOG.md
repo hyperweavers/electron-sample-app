@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.2](https://github.com/hyperweavers/electron-sample-app/compare/v1.8.1...v1.8.2) (2020-08-30)
+
+
+### Bug Fixes
+
+* update artifacts download path ([fa35b57](https://github.com/hyperweavers/electron-sample-app/commit/fa35b578722964b8159a6afecd515f9fee4b7d6f))
+
 ## [1.8.1](https://github.com/hyperweavers/electron-sample-app/compare/v1.8.0...v1.8.1) (2020-08-30)
 
 
