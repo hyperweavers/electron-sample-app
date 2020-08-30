@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.1](https://github.com/hyperweavers/electron-sample-app/compare/v1.8.0...v1.8.1) (2020-08-30)
+
+
+### Bug Fixes
+
+* add name to artifacts in ci ([09b92fd](https://github.com/hyperweavers/electron-sample-app/commit/09b92fdf9cdaf45b110d1e31ee7fa8d37f0d8171))
+
 # [1.8.0](https://github.com/hyperweavers/electron-sample-app/compare/v1.7.1...v1.8.0) (2020-08-30)
 
 
