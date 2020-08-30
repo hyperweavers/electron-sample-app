@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.2](https://github.com/hyperweavers/electron-sample-app/compare/v1.4.1...v1.4.2) (2020-08-30)
+
+
+### Bug Fixes
+
+* use github provided token instead of auto generated one ([a220dea](https://github.com/hyperweavers/electron-sample-app/commit/a220deaaf5b4b91bdac1dd8abf1c78bb6c197bc3))
+
 ## [1.4.1](https://github.com/hyperweavers/electron-sample-app/compare/v1.4.0...v1.4.1) (2020-08-29)
 
 
