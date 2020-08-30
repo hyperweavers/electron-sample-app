@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.7](https://github.com/hyperweavers/electron-sample-app/compare/v1.6.6...v1.6.7) (2020-08-30)
+
+
+### Bug Fixes
+
+* add npm plugin to semantic-release config ([a5e83da](https://github.com/hyperweavers/electron-sample-app/commit/a5e83da93a311baab80ad07fa43fecfd0d9a573f))
+
 ## [1.6.6](https://github.com/hyperweavers/electron-sample-app/compare/v1.6.5...v1.6.6) (2020-08-30)
 
 
