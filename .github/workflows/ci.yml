@@ -50,6 +50,7 @@ jobs:
         uses: actions/upload-artifact@v2
         if: ${{ success() }}
         with:
+          name: packages
           path: |
             ./out/make/**/*.exe
             ./out/make/**/*.deb
@@ -95,6 +96,8 @@ jobs:
       - name: Download build artifact(s)
         uses: actions/download-artifact@v2
         if: ${{ success() }}
+        with:
+          name: packages
 
       - name: Configure GPG Key
         env:

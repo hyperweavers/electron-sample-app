@@ -24,23 +24,23 @@
     ["@semantic-release/github", {
       "assets": [
         {
-          "path": "out/make/**/*.exe",
+          "path": "./packages/out/make/**/*.exe",
           "name": "App-${nextRelease.version}.exe"
         },
         {
-          "path": "out/make/**/*.deb",
+          "path": "./packages/out/make/**/*.deb",
           "name": "App-${nextRelease.version}.deb"
         },
         {
-          "path": "out/make/**/*.rpm",
+          "path": "./packages/out/make/**/*.rpm",
           "name": "App-${nextRelease.version}.rpm"
         },
         {
-          "path": "out/make/**/*.dmg",
+          "path": "./packages/out/make/**/*.dmg",
           "name": "App-${nextRelease.version}.dmg"
         },
         {
-          "path": "out/make/**/*.zip",
+          "path": "./packages/out/make/**/*.zip",
           "name": "App-${nextRelease.version}.zip"
         }
       ]
