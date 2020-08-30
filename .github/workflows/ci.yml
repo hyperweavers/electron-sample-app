@@ -67,6 +67,9 @@ jobs:
         node_version: [ 12.x ]
 
     steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+
       - name: Download build artifact(s)
         uses: actions/download-artifact@v2
         if: ${{ success() }}
