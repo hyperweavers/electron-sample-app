@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.2](https://github.com/hyperweavers/electron-sample-app/compare/v1.6.1...v1.6.2) (2020-08-30)
+
+
+### Bug Fixes
+
+* use github actions token for ci ([9caba6b](https://github.com/hyperweavers/electron-sample-app/commit/9caba6bff41b8b61659c13f466805fda40b8423b))
+
 ## [1.6.1](https://github.com/hyperweavers/electron-sample-app/compare/v1.6.0...v1.6.1) (2020-08-30)
 
 
