@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.3](https://github.com/hyperweavers/electron-sample-app/compare/v1.6.2...v1.6.3) (2020-08-30)
+
+
+### Bug Fixes
+
+* configure commit signing in ci ([db38d2e](https://github.com/hyperweavers/electron-sample-app/commit/db38d2ec4ec8e97267a29318a0b87621b0297278))
+
 ## [1.6.2](https://github.com/hyperweavers/electron-sample-app/compare/v1.6.1...v1.6.2) (2020-08-30)
 
 
