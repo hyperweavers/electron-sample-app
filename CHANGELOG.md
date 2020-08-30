@@ -1,5 +1,17 @@
 # Changelog
 
+# [1.6.0](https://github.com/hyperweavers/electron-sample-app/compare/v1.5.0...v1.6.0) (2020-08-30)
+
+
+### Bug Fixes
+
+* remove npm plugin from semantic-release config ([6fb26e2](https://github.com/hyperweavers/electron-sample-app/commit/6fb26e2bd3889fab13a7f66543bb0d011ba45f8c))
+
+
+### Features
+
+* add commitizen ([c5d8e27](https://github.com/hyperweavers/electron-sample-app/commit/c5d8e279f6e26673c908738730afa3aa144426dc))
+
 # [1.5.0](https://github.com/hyperweavers/electron-sample-app/compare/v1.4.2...v1.5.0) (2020-08-30)
 
 
