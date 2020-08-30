@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.3](https://github.com/hyperweavers/electron-sample-app/compare/v1.8.2...v1.8.3) (2020-08-30)
+
+
+### Bug Fixes
+
+* update assets path in semantic-release config ([01ba592](https://github.com/hyperweavers/electron-sample-app/commit/01ba592780a4c9eb37f4fe57dba3781620b68dee))
+
 ## [1.8.2](https://github.com/hyperweavers/electron-sample-app/compare/v1.8.1...v1.8.2) (2020-08-30)
 
 
