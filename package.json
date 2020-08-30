@@ -17,6 +17,10 @@
     "name": "Kesavamoorthi Subramanian",
     "email": "k7moorthi@gmail.com"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hyperweavers/electron-sample-app.git"
+  },
   "license": "MIT",
   "config": {
     "forge": {
@@ -56,6 +60,9 @@
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
      }
   },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
+  },
   "devDependencies": {
     "@commitlint/cli": "^9.1.2",
     "@commitlint/config-conventional": "^9.1.2",
@@ -82,12 +89,5 @@
     "style-loader": "^1.2.1",
     "ts-loader": "^8.0.2",
     "typescript": "^4.0.2"
-  },
-  "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/hyperweavers/electron-sample-app.git"
   }
 }
