@@ -15,7 +15,8 @@ jobs:
     strategy:
       matrix:
         node_version: [ 12.x ]
-        os: [ ubuntu-latest, windows-latest, macos-latest ]
+        os: [ ubuntu-latest]
+        #, windows-latest, macos-latest ]
 
     steps:
       - name: Checkout branch
@@ -46,17 +47,23 @@ jobs:
       - name: Build application
         run: npm run make
 
+      - name: Move artifact(s) to one place
+          run: |
+          mkdir ./out/artifacts
+          cp ./out/make/**/*.{exe,deb,rpm,dmg,zip} ./out/artifacts
+
       - name: Upload build artifact(s)
         uses: actions/upload-artifact@v2
         if: ${{ success() }}
         with:
           name: packages
-          path: |
-            ./out/make/**/*.exe
-            ./out/make/**/*.deb
-            ./out/make/**/*.rpm
-            ./out/make/**/*.dmg
-            ./out/make/**/*.zip
+          path: ./out/artifacts/*
+          # path: |
+          #   ./out/make/**/*.exe
+          #   ./out/make/**/*.deb
+          #   ./out/make/**/*.rpm
+          #   ./out/make/**/*.dmg
+          #   ./out/make/**/*.zip
 
   release:
     if: ${{ success() }}
@@ -110,12 +117,13 @@ jobs:
 
       - name: Generate, sign and verify checksum for artifact(s)
         run: |
-          shasum -a 256 ./downloads/**/*.{exe,deb,rpm,dmg,zip} > SHA256SUMS || exit 0
+          cd ./downloads
+          shasum -a 256 *.{exe,deb,rpm,dmg,zip} > SHA256SUMS || true
           gpg --armor --output SHA256SUMS.gpg --detach-sig SHA256SUMS
           gpg --verify SHA256SUMS.gpg SHA256SUMS
           cat SHA256SUMS
           cat SHA256SUMS.gpg
-          shasum -a 256 -c SHA256SUMS || exit 0
+          shasum -a 256 -c SHA256SUMS || true
 
       - name: Release application
         env:
