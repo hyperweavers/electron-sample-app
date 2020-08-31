@@ -50,7 +50,7 @@ jobs:
       - name: Move artifact(s) to one place
         run: |
           mkdir ./out/artifacts
-          find -regex ".*\.\(exe\|deb\|rpm\|dmg\|zip\)" -exec cp {} ./out/artifacts \;
+          find -regex "./out/make/*\.\(exe\|deb\|rpm\|dmg\|zip\)" -exec cp {} ./out/artifacts \;
 
       - name: Upload build artifact(s)
         uses: actions/upload-artifact@v2
