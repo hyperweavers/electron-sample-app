@@ -48,7 +48,7 @@ jobs:
         run: npm run make
 
       - name: Move artifact(s) to one place
-          run: |
+        run: |
           mkdir ./out/artifacts
           cp ./out/make/**/*.{exe,deb,rpm,dmg,zip} ./out/artifacts
 
