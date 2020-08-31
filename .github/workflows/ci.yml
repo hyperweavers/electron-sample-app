@@ -51,13 +51,12 @@ jobs:
         if: ${{ success() }}
         with:
           name: packages
-          path: ./out/make/**/*.{exe,deb,rpm,dmg,zip}
-          # path: |
-          #   ./out/make/**/*.exe
-          #   ./out/make/**/*.deb
-          #   ./out/make/**/*.rpm
-          #   ./out/make/**/*.dmg
-          #   ./out/make/**/*.zip
+          path: |
+            ./out/make/**/*.exe
+            ./out/make/**/*.deb
+            ./out/make/**/*.rpm
+            ./out/make/**/*.dmg
+            ./out/make/**/*.zip
 
   release:
     if: ${{ success() }}
