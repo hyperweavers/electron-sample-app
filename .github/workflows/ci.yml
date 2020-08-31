@@ -14,8 +14,8 @@ jobs:
     timeout-minutes: 10
     strategy:
       matrix:
-        node_version: [ 12.x ]
-        os: [ ubuntu-latest, windows-latest, macos-latest ]
+        node_version: [ '12.x' ]
+        os: [ 'ubuntu-latest', 'windows-latest', 'macos-latest' ]
 
     steps:
       - uses: common@v1
@@ -42,11 +42,11 @@ jobs:
   release:
     if: ${{ success() }}
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: 'ubuntu-latest'
     timeout-minutes: 5
     strategy:
       matrix:
-        node_version: [ 12.x ]
+        node_version: [ '12.x' ]
 
     steps:
       - uses: common@v1
