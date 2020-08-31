@@ -21,7 +21,7 @@ jobs:
       - name: Checkout branch
         uses: actions/checkout@v2
 
-      - uses: common@v1
+      - uses: actions/common@v1
         with:
           os: ${{ runner.os }}
           node_version: ${{ matrix.node_version }}
@@ -55,7 +55,7 @@ jobs:
       - name: Checkout branch
         uses: actions/checkout@v2
 
-      - uses: common@v1
+      - uses: actions/common@v1
         with:
           os: ${{ runner.os }}
           node_version: ${{ matrix.node_version }}
