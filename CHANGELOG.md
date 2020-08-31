@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.9.2](https://github.com/hyperweavers/electron-sample-app/compare/v1.9.1...v1.9.2) (2020-08-31)
+
+
+### Bug Fixes
+
+* remove path from rexexp ([5d7c19e](https://github.com/hyperweavers/electron-sample-app/commit/5d7c19e45fa95648bf443bece9f26ac2139b4544))
+* update path in rexexp ([1d811a7](https://github.com/hyperweavers/electron-sample-app/commit/1d811a7864bd6b982a4e4a4ac91376cefd2f4875))
+
 ## [1.9.1](https://github.com/hyperweavers/electron-sample-app/compare/v1.9.0...v1.9.1) (2020-08-31)
 
 
