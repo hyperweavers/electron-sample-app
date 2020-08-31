@@ -18,30 +18,10 @@ jobs:
         os: [ ubuntu-latest, windows-latest, macos-latest ]
 
     steps:
-      - name: Checkout branch
-        uses: actions/checkout@v2
-
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v1
+      - uses: common@v1
         with:
-          node-version: ${{ matrix.node_version }}
-
-      - name: Determine npm cache location
-        id: npm-cache
-        run: echo "::set-output name=dir::$(npm config get cache)"
-
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        env:
-          cache-name: dependencies-cache
-        with:
-          path: ${{ steps.npm-cache.outputs.dir }}
-          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-${{ env.cache-name }}-
-
-      - name: Install dependencies
-        run: npm ci
+          os: ${{ runner.os }}
+          node_version: ${{ matrix.node_version }}
 
       - name: Build application
         run: npm run make
@@ -51,12 +31,13 @@ jobs:
         if: ${{ success() }}
         with:
           name: packages
-          path: |
-            ./out/make/**/*.exe
-            ./out/make/**/*.deb
-            ./out/make/**/*.rpm
-            ./out/make/**/*.dmg
-            ./out/make/**/*.zip
+          path: ./out/make/**/*.{exe,deb,rpm,dmg,zip}
+          # path: |
+          #   ./out/make/**/*.exe
+          #   ./out/make/**/*.deb
+          #   ./out/make/**/*.rpm
+          #   ./out/make/**/*.dmg
+          #   ./out/make/**/*.zip
 
   release:
     if: ${{ success() }}
@@ -68,30 +49,10 @@ jobs:
         node_version: [ 12.x ]
 
     steps:
-      - name: Checkout branch
-        uses: actions/checkout@v2
-
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v1
+      - uses: common@v1
         with:
-          node-version: ${{ matrix.node_version }}
-
-      - name: Determine npm cache location
-        id: npm-cache
-        run: echo "::set-output name=dir::$(npm config get cache)"
-
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        env:
-          cache-name: dependencies-cache
-        with:
-          path: ${{ steps.npm-cache.outputs.dir }}
-          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-${{ env.cache-name }}-
-
-      - name: Install dependencies
-        run: npm ci
+          os: ${{ runner.os }}
+          node_version: ${{ matrix.node_version }}
 
       - name: Download build artifact(s)
         uses: actions/download-artifact@v2
@@ -100,13 +61,20 @@ jobs:
           name: packages
           path: ./downloads
 
-      - name: Configure GPG Key
+      - name: Configure GPG key
         env:
           GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
         run: |
           mkdir -p ~/.gnupg/
           printf "$GPG_SIGNING_KEY" | base64 --decode > ~/.gnupg/private.key
           gpg --import ~/.gnupg/private.key
+
+      - name: Generate, sign and verify checksum for artifact(s)
+        run: |
+          shasum -a 256 ./downloads/**/*.{exe,deb,rpm,dmg,zip} > SHA256SUMS
+          gpg --armor --output SHA256SUMS.gpg --detach-sig SHA256SUMS
+          gpg --verify SHA256SUMS.gpg SHA256SUMS
+          shasum -a 256 -c SHA256SUMS
 
       - name: Release application
         env:

@@ -42,7 +42,8 @@
         {
           "path": "./downloads/**/*.zip",
           "name": "App-${nextRelease.version}.zip"
-        }
+        },
+        "path": "./SHA256SUMS?(.gpg)"
       ]
     }]
   ]
