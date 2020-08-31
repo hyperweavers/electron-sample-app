@@ -110,10 +110,12 @@ jobs:
 
       - name: Generate, sign and verify checksum for artifact(s)
         run: |
-          shasum -a 256 ./downloads/**/*.{exe,deb,rpm,dmg,zip} > SHA256SUMS || :
+          shasum -a 256 ./downloads/**/*.{exe,deb,rpm,dmg,zip} > SHA256SUMS || exit 0
           gpg --armor --output SHA256SUMS.gpg --detach-sig SHA256SUMS
           gpg --verify SHA256SUMS.gpg SHA256SUMS
-          shasum -a 256 -c SHA256SUMS
+          cat SHA256SUMS
+          cat SHA256SUMS.gpg
+          shasum -a 256 -c SHA256SUMS || exit 0
 
       - name: Release application
         env:
