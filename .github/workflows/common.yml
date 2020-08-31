@@ -3,7 +3,7 @@ description: 'Common steps needed for workflows'
 
 inputs:
   os:
-    description: ''
+    description: 'OS'
     default: 'ubuntu-latest'
   node_version:
     description: 'Node version'
