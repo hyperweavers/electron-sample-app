@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.9.1](https://github.com/hyperweavers/electron-sample-app/compare/v1.9.0...v1.9.1) (2020-08-31)
+
+
+### Bug Fixes
+
+* correct syntax error ([b277b35](https://github.com/hyperweavers/electron-sample-app/commit/b277b357fe3db5e863f032937eb5d379bd5ecd56))
+* move artifacts to one place before upload ([11cbc2f](https://github.com/hyperweavers/electron-sample-app/commit/11cbc2fb9efc46cca73d1239983f01acd8ab5feb))
+* update file extensions in regexp ([17df1a7](https://github.com/hyperweavers/electron-sample-app/commit/17df1a772d470586be4cee22d61c0fd027fbaf51))
+* use regexp for copy artifacts under one directory ([11185c9](https://github.com/hyperweavers/electron-sample-app/commit/11185c9641311c3e0d21d67d040c6fdc8f9fc949))
+
 # [1.9.0](https://github.com/hyperweavers/electron-sample-app/compare/v1.8.4...v1.9.0) (2020-08-31)
 
 
