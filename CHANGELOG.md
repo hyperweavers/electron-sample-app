@@ -1,5 +1,26 @@
 # Changelog
 
+# [1.9.0](https://github.com/hyperweavers/electron-sample-app/compare/v1.8.4...v1.9.0) (2020-08-31)
+
+
+### Bug Fixes
+
+* add input description for os in common action ([acf98c5](https://github.com/hyperweavers/electron-sample-app/commit/acf98c518809b7a0275ecafc37c343286a1eb18b))
+* change common action directory strecture ([8274cb4](https://github.com/hyperweavers/electron-sample-app/commit/8274cb4f5500fa2b23e57bc6656a96fb1f30299e))
+* change common action tag in ci ([8fcd015](https://github.com/hyperweavers/electron-sample-app/commit/8fcd01534cf136bdaf185cfd4e2eeb1b87d41e99))
+* enclose os and node matrix with quote ([0b67fe5](https://github.com/hyperweavers/electron-sample-app/commit/0b67fe59c1f233c6a1184dffd9bfa7faece69e2d))
+* move out checkout step from common ([76761ae](https://github.com/hyperweavers/electron-sample-app/commit/76761ae9c3048d8f82b54d182b2b7d2db210e4df))
+* prefix 'action' to common step in ci ([7f395fa](https://github.com/hyperweavers/electron-sample-app/commit/7f395fafda2f307d1cf55d7bdaa42f3d4cc95b5c))
+* prevent exit code 1 for shasum ([553385d](https://github.com/hyperweavers/electron-sample-app/commit/553385d9cee56acf9f6a2e4ae1a9783786d4ca33))
+* print chechsum and signature in ci ([62b51a6](https://github.com/hyperweavers/electron-sample-app/commit/62b51a65f2d092eb95d043cda7a157df69e28b00))
+* remove combined regexp for artifacts upload ([d14547f](https://github.com/hyperweavers/electron-sample-app/commit/d14547f9ae91aa7e62487a72afaefc9bf238fa22))
+* rollback composite actions ([fbe4b09](https://github.com/hyperweavers/electron-sample-app/commit/fbe4b09257bab510eedb4f5bf0fe3615e37ac6fa))
+
+
+### Features
+
+* publish artifact checksums and use composite actions ([d1f57f6](https://github.com/hyperweavers/electron-sample-app/commit/d1f57f6e25e2bb73fa5c714414b178fb34d6690d))
+
 ## [1.8.4](https://github.com/hyperweavers/electron-sample-app/compare/v1.8.3...v1.8.4) (2020-08-30)
 
 
