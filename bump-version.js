@@ -52,13 +52,7 @@ const writeVersion = (filePath, version) => {
       fs.writeFile(filePath, packageJsonObj, (err) => {
         if (err) throw err;
 
-        try {
-          writeBinaryName(appName, version);
-        } catch(err) {
-          console.error('Writing binary name to file failed with %O', err);
-
-          // process.exit(1);
-        }
+        writeBinaryName(appName, version);
       });
     });
   } else {
@@ -73,23 +67,13 @@ const bumpVersion = () => {
 
       console.info(`Next version: ${version}`);
 
-      try {
-        console.info('Write version to package.json');
-        writeVersion('./package.json', version);
-      } catch(err) {
-        console.error('Writing version to package.json failed with %O', err);
-
-        process.exit(1);
-      }
+      console.info('Write version to package.json');
+      writeVersion('./package.json', version);
     } else {
-      console.info('No changes for version bump.');
-
-      process.exit(1);
+      console.error('No changes for version bump.');
     }
   }).catch((err) => {
     console.error('Version bump failed with %O', err);
-
-    process.exit(1);
   });
 };
 
