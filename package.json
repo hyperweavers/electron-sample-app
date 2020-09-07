@@ -22,6 +22,7 @@
     "url": "https://github.com/hyperweavers/electron-sample-app.git"
   },
   "license": "MIT",
+  "private": true,
   "config": {
     "forge": {
       "packagerConfig": {},
@@ -68,6 +69,7 @@
   },
   "husky": {
     "hooks": {
+      "pre-commit": "npm run lint",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
