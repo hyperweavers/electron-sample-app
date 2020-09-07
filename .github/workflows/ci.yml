@@ -116,6 +116,7 @@ jobs:
           find ./out/ -regex ".*\.\(exe\|deb\|rpm\|dmg\|zip\)" -exec cp {} ./out/binaries \;
           cd ./out/binaries
           rename -v "s/[^\/]+\./$( cat ../../.release )./" *
+          rm ../../.release
 
       - name: Configure GPG key
         env:
