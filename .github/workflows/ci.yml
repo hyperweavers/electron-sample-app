@@ -51,26 +51,25 @@ jobs:
       - name: Build application
         run: npm run make
 
-      - name: Copy artifact(s) to one place
-        run: echo ${{ steps.bump-version.outputs.version }}
-        # run: |
-        #   mkdir ./out/artifacts
-        #   find ./out/make/ -regex ".*\.\(exe\|deb\|rpm\|dmg\|zip\)" -exec cp {} ./out/artifacts \;
-        #   cd ./out/artifacts
-        #   rename -v "s/[^\/]+\./Frames-${{ steps.bump-version.outputs.version }}./" *
+      # - name: Copy artifact(s) to one place
+      #   run: |
+      #     mkdir ./out/artifacts
+      #     find ./out/make/ -regex ".*\.\(exe\|deb\|rpm\|dmg\|zip\)" -exec cp {} ./out/artifacts \;
+      #     cd ./out/artifacts
+      #     rename -v "s/[^\/]+\./Frames-${{ steps.bump-version.outputs.version }}./" *
 
       - name: Upload build artifact(s)
         uses: actions/upload-artifact@v2
         if: ${{ success() }}
         with:
           name: packages
-          path: ./out/artifacts/*
-          # path: |
-          #   ./out/make/**/*.exe
-          #   ./out/make/**/*.deb
-          #   ./out/make/**/*.rpm
-          #   ./out/make/**/*.dmg
-          #   ./out/make/**/*.zip
+          # path: ./out/artifacts/*
+          path: |
+            ./out/make/**/*.exe
+            ./out/make/**/*.deb
+            ./out/make/**/*.rpm
+            ./out/make/**/*.dmg
+            ./out/make/**/*.zip
 
   release:
     if: ${{ success() }}
@@ -119,6 +118,14 @@ jobs:
           name: packages
           path: ./downloads
 
+      - name: Copy artifact(s) to one place
+        run: |
+          mkdir ./artifacts
+          find ./downloads/ -regex ".*\.\(exe\|deb\|rpm\|dmg\|zip\)" -exec cp {} ./artifacts \;
+          cd ./out/artifacts
+          rename -v "s/[^\/]+\./App./" *
+          echo ${{ steps.bump-version.outputs.version }}
+
       - name: Configure GPG key
         env:
           GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
@@ -129,7 +136,7 @@ jobs:
 
       - name: Generate, sign and verify checksum for artifact(s)
         run: |
-          cd ./downloads
+          cd ./artifacts
           shasum -a 256 *.{exe,deb,rpm,dmg,zip} > SHA256SUMS || true
           gpg --armor --output SHA256SUMS.gpg --detach-sig SHA256SUMS
           gpg --verify SHA256SUMS.gpg SHA256SUMS

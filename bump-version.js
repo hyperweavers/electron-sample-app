@@ -16,7 +16,7 @@ const getNextVersion = () => {
       plugins: [
         '@semantic-release/commit-analyzer'
       ],
-      dryRun: true,
+      dryRun: true
     });
   } catch (err) {
     console.error('Version analysis failed with %O', err);
@@ -56,7 +56,7 @@ const bumpVersion = () => {
         console.info('Write version to package.json');
         writeVersion('./package.json', version);
 
-        return version;
+        process.env['NEXT_RELEASE_VERSION'] = version;
       } catch(err) {
         console.error('Writing version to package.json failed with %O', err)
       }
