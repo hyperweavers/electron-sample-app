@@ -29,7 +29,7 @@ const writeBinaryName = (appName, version) => {
   if ((typeof appName === 'string' && appName !== '') &&
     (typeof version === 'string' && version !== '')
   ) {
-    fs.writeFile('./out/make/.release', `${appName}-${version}`, (err) => {
+    fs.writeFile('./.release', `${appName}-${version}`, (err) => {
       if (err) throw err;
     });
   } else {
