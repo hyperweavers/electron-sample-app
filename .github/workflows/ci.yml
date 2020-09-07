@@ -67,7 +67,7 @@ jobs:
           name: binaries
           # path: ./out/artifacts/*
           path: |
-            ./out/make/.release
+            ./.release
             ./out/make/**/*.exe
             ./out/make/**/*.deb
             ./out/make/**/*.rpm
@@ -125,7 +125,7 @@ jobs:
           mkdir ./out/binaries
           find ./out/ -regex ".*\.\(exe\|deb\|rpm\|dmg\|zip\)" -exec cp {} ./out/binaries \;
           cd ./out/binaries
-          rename -v "s/[^\/]+\./$( cat ../make/.release )./" *
+          rename -v "s/[^\/]+\./$( cat ../../.release )./" *
 
       - name: Configure GPG key
         env:

@@ -31,9 +31,9 @@ const writeBinaryName = (appName, version) => {
   ) {
     fs.writeFile('./out/make/.release', `${appName}-${version}`, (err) => {
       if (err) throw err;
-
-      writeBinaryName(appName, version);
     });
+  } else {
+    throw new Error('Invalid app path and/or version.');
   }
 };
 
@@ -56,7 +56,7 @@ const writeVersion = (filePath, version) => {
       });
     });
   } else {
-    throw new Error('Invalid file path or version.');
+    throw new Error('Invalid file path and/or version.');
   }
 };
 
@@ -71,13 +71,19 @@ const bumpVersion = () => {
         console.info('Write version to package.json');
         writeVersion('./package.json', version);
       } catch(err) {
-        console.error('Writing version to package.json failed with %O', err)
+        console.error('Writing version to package.json failed with %O', err);
+
+        process.exit(1);
       }
     } else {
       console.info('No changes for version bump.');
+
+      process.exit(1);
     }
   }).catch((err) => {
     console.error('Version bump failed with %O', err);
+
+    process.exit(1);
   });
 };
 
