@@ -1,5 +1,19 @@
 # Changelog
 
+# [2.2.0](https://github.com/hyperweavers/electron-sample-app/compare/v2.1.1...v2.2.0) (2020-09-07)
+
+
+### Bug Fixes
+
+* **release:** catch exceptions on binary name file write ([bea7e2d](https://github.com/hyperweavers/electron-sample-app/commit/bea7e2dc6aaa35b32471c6993051a147797733d0))
+* **release:** exit bump version process with error code 1 on failure ([973bba8](https://github.com/hyperweavers/electron-sample-app/commit/973bba8626e01f59b6550ac08525fbdf15ce7f83))
+* **release:** remove script output capture on version bump in ci ([3ff2c5e](https://github.com/hyperweavers/electron-sample-app/commit/3ff2c5e9f17a983274a4affd697a32a3cc950aea))
+
+
+### Features
+
+* **release:** use file to save app name for reuse across jobs ([5ac4f83](https://github.com/hyperweavers/electron-sample-app/commit/5ac4f83ada7509ad886a2b5909ec5c3c284fabf4))
+
 ## [2.1.1](https://github.com/hyperweavers/electron-sample-app/compare/v2.1.0...v2.1.1) (2020-09-07)
 
 
