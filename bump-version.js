@@ -52,7 +52,13 @@ const writeVersion = (filePath, version) => {
       fs.writeFile(filePath, packageJsonObj, (err) => {
         if (err) throw err;
 
-        writeBinaryName(appName, version);
+        try {
+          writeBinaryName(appName, version);
+        } catch(err) {
+          console.error('Writing binary name to file failed with %O', err);
+
+          process.exit(1);
+        }
       });
     });
   } else {
