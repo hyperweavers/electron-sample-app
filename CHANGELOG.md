@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.1.1](https://github.com/hyperweavers/electron-sample-app/compare/v2.1.0...v2.1.1) (2020-09-07)
+
+
+### Bug Fixes
+
+* **release:** move custom steps to release job ([f9e22cd](https://github.com/hyperweavers/electron-sample-app/commit/f9e22cd52040a15d9596c9aacb5edb6100fd20e5))
+* **release:** print package.json after version bump ([1e8daac](https://github.com/hyperweavers/electron-sample-app/commit/1e8daacdd4f95c507511f3ffee32737bcc5f64d8))
+* **release:** store and use version in ci ([58e20ec](https://github.com/hyperweavers/electron-sample-app/commit/58e20ec1dacd378f42ec24bdaf901ca675624a7b))
+
 # [2.1.0](https://github.com/hyperweavers/electron-sample-app/compare/v2.0.1...v2.1.0) (2020-09-07)
 
 
