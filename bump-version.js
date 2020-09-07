@@ -57,7 +57,7 @@ const writeVersion = (filePath, version) => {
         } catch(err) {
           console.error('Writing binary name to file failed with %O', err);
 
-          process.exit(1);
+          // process.exit(1);
         }
       });
     });
