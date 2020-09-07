@@ -45,17 +45,19 @@ jobs:
         run: npm ci
 
       - name: Bump application version
-        run: |
-          node bump-version.js
-          cat package.json
+        id: bump-version
+        run: echo "::set-output name=version::$(node bump-version.js)"
 
       - name: Build application
         run: npm run make
 
-      - name: Move artifact(s) to one place
-        run: |
-          mkdir ./out/artifacts
-          find ./out/make/ -regex ".*\.\(exe\|deb\|rpm\|dmg\|zip\)" -exec cp {} ./out/artifacts \;
+      - name: Copy artifact(s) to one place
+        run: echo ${{ steps.bump-version.outputs.version }}
+        # run: |
+        #   mkdir ./out/artifacts
+        #   find ./out/make/ -regex ".*\.\(exe\|deb\|rpm\|dmg\|zip\)" -exec cp {} ./out/artifacts \;
+        #   cd ./out/artifacts
+        #   rename -v "s/[^\/]+\./Frames-${{ steps.bump-version.outputs.version }}./" *
 
       - name: Upload build artifact(s)
         uses: actions/upload-artifact@v2
@@ -87,6 +89,11 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node_version }}
+
+      - name: Install Linux package(s)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends rename
 
       - name: Determine npm cache location
         id: npm-cache

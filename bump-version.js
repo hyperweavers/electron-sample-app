@@ -55,6 +55,8 @@ const bumpVersion = () => {
       try {
         console.info('Write version to package.json');
         writeVersion('./package.json', version);
+
+        return version;
       } catch(err) {
         console.error('Writing version to package.json failed with %O', err)
       }
