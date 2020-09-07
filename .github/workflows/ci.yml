@@ -46,7 +46,9 @@ jobs:
 
       - name: Bump application version
         id: bump-version
-        run: echo "::set-output name=version::$(node bump-version.js)"
+        run: |
+          echo "::set-output name=version::$(node bump-version.js)"
+          cat package.json
 
       - name: Build application
         run: npm run make
@@ -122,7 +124,7 @@ jobs:
         run: |
           mkdir ./artifacts
           find ./downloads/ -regex ".*\.\(exe\|deb\|rpm\|dmg\|zip\)" -exec cp {} ./artifacts \;
-          cd ./out/artifacts
+          cd ./artifacts
           rename -v "s/[^\/]+\./App./" *
           echo ${{ steps.bump-version.outputs.version }}
 
