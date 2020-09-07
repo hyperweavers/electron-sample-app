@@ -45,20 +45,10 @@ jobs:
         run: npm ci
 
       - name: Bump application version
-        id: bump-version
-        run: |
-          echo "::set-output name=version::$(node bump-version.js)"
-          cat package.json
+        run: node bump-version.js
 
       - name: Build application
         run: npm run make
-
-      # - name: Copy artifact(s) to one place
-      #   run: |
-      #     mkdir ./out/artifacts
-      #     find ./out/make/ -regex ".*\.\(exe\|deb\|rpm\|dmg\|zip\)" -exec cp {} ./out/artifacts \;
-      #     cd ./out/artifacts
-      #     rename -v "s/[^\/]+\./Frames-${{ steps.bump-version.outputs.version }}./" *
 
       - name: Upload build artifact(s)
         uses: actions/upload-artifact@v2
