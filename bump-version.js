@@ -12,9 +12,9 @@ async function init() {
       ],
       plugins: [
         '@semantic-release/commit-analyzer',
-        ['@semantic-release/npm', {
-          npmPublish: false
-        }]
+        // ['@semantic-release/npm', {
+        //   npmPublish: false
+        // }]
       ]
     });
 
