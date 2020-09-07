@@ -1,5 +1,17 @@
 # Changelog
 
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [2.2.2](https://github.com/hyperweavers/electron-sample-app/compare/v2.2.1...v2.2.2) (2020-09-07)
+
+
+### Bug Fixes
+
+* **release:** change changelog title ([9c458a9](https://github.com/hyperweavers/electron-sample-app/commit/9c458a9567b9e330eb2bc0a6d53384fb6538a72e))
+
+# Changelog
+
 ## [2.2.1](https://github.com/hyperweavers/electron-sample-app/compare/v2.2.0...v2.2.1) (2020-09-07)
 
 
