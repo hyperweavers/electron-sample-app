@@ -20,6 +20,8 @@ const getNextVersion = () => {
     });
   } catch (err) {
     console.error('Version analysis failed with %O', err);
+
+    process.exit(1);
   }
 
   return result;
@@ -71,9 +73,13 @@ const bumpVersion = () => {
       writeVersion('./package.json', version);
     } else {
       console.error('No changes for version bump.');
+
+      process.exit(1);
     }
   }).catch((err) => {
     console.error('Version bump failed with %O', err);
+
+    process.exit(1);
   });
 };
 
