@@ -15,7 +15,8 @@ async function init() {
         // ['@semantic-release/npm', {
         //   npmPublish: false
         // }]
-      ]
+      ],
+      dryRun: true
     });
 
     if (result) {
