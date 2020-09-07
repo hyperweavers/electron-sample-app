@@ -25,6 +25,18 @@ const getNextVersion = () => {
   return result;
 };
 
+const writeBinaryName = (appName, version) => {
+  if ((typeof appName === 'string' && appName !== '') &&
+    (typeof version === 'string' && version !== '')
+  ) {
+    fs.writeFile('./out/make/.release', `${appName}-${version}`, (err) => {
+      if (err) throw err;
+
+      writeBinaryName(appName, version);
+    });
+  }
+};
+
 const writeVersion = (filePath, version) => {
   if ((typeof filePath === 'string' && filePath !== '') &&
     (typeof version === 'string' && version !== '')
@@ -33,11 +45,14 @@ const writeVersion = (filePath, version) => {
       if (err) throw err;
 
       let packageJsonObj = JSON.parse(data);
+      const appName = packageJsonObj.productName;
       packageJsonObj.version = version;
       packageJsonObj = JSON.stringify(packageJsonObj, null, '  ');
 
       fs.writeFile(filePath, packageJsonObj, (err) => {
         if (err) throw err;
+
+        writeBinaryName(appName, version);
       });
     });
   } else {
@@ -55,8 +70,6 @@ const bumpVersion = () => {
       try {
         console.info('Write version to package.json');
         writeVersion('./package.json', version);
-
-        process.env['NEXT_RELEASE_VERSION'] = version;
       } catch(err) {
         console.error('Writing version to package.json failed with %O', err)
       }

@@ -64,9 +64,10 @@ jobs:
         uses: actions/upload-artifact@v2
         if: ${{ success() }}
         with:
-          name: packages
+          name: binaries
           # path: ./out/artifacts/*
           path: |
+            ./out/make/.release
             ./out/make/**/*.exe
             ./out/make/**/*.deb
             ./out/make/**/*.rpm
@@ -117,16 +118,14 @@ jobs:
         uses: actions/download-artifact@v2
         if: ${{ success() }}
         with:
-          name: packages
-          path: ./downloads
+          name: binaries
 
       - name: Copy artifact(s) to one place
         run: |
-          mkdir ./artifacts
-          find ./downloads/ -regex ".*\.\(exe\|deb\|rpm\|dmg\|zip\)" -exec cp {} ./artifacts \;
-          cd ./artifacts
-          rename -v "s/[^\/]+\./App./" *
-          echo ${{ steps.bump-version.outputs.version }}
+          mkdir ./out/binaries
+          find ./out/ -regex ".*\.\(exe\|deb\|rpm\|dmg\|zip\)" -exec cp {} ./out/binaries \;
+          cd ./out/binaries
+          rename -v "s/[^\/]+\./$( cat ../make/.release )./" *
 
       - name: Configure GPG key
         env:
@@ -138,7 +137,7 @@ jobs:
 
       - name: Generate, sign and verify checksum for artifact(s)
         run: |
-          cd ./artifacts
+          cd ./out/binaries
           shasum -a 256 *.{exe,deb,rpm,dmg,zip} > SHA256SUMS || true
           gpg --armor --output SHA256SUMS.gpg --detach-sig SHA256SUMS
           gpg --verify SHA256SUMS.gpg SHA256SUMS

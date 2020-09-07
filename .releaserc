@@ -24,26 +24,26 @@
     ["@semantic-release/github", {
       "assets": [
         {
-          "path": "./downloads/*.exe",
+          "path": "./out/binaries/*.exe",
           "name": "App-${nextRelease.version}.exe"
         },
         {
-          "path": "./downloads/*.deb",
+          "path": "./out/binaries/*.deb",
           "name": "App-${nextRelease.version}.deb"
         },
         {
-          "path": "./downloads/*.rpm",
+          "path": "./out/binaries/*.rpm",
           "name": "App-${nextRelease.version}.rpm"
         },
         {
-          "path": "./downloads/*.dmg",
+          "path": "./out/binaries/*.dmg",
           "name": "App-${nextRelease.version}.dmg"
         },
         {
-          "path": "./downloads/*.zip",
+          "path": "./out/binaries/*.zip",
           "name": "App-${nextRelease.version}.zip"
         },
-        "path": "./downloads/SHA256SUMS?(.gpg)"
+        "path": "./out/binaries/SHA256SUMS?(.gpg)"
       ]
     }]
   ]
