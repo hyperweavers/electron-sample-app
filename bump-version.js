@@ -1,9 +1,12 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const semanticRelease = require('semantic-release');
+const fs = require('fs');
 
-async function init() {
+const getNextVersion = () => {
+  let result;
+
   try {
-    const result = await semanticRelease({
+    result = semanticRelease({
       branches: [
         'stable',
         '+([0-9])?(.{+([0-9]),x}).x',
@@ -11,22 +14,56 @@ async function init() {
         {name: 'alpha', prerelease: true}
       ],
       plugins: [
-        '@semantic-release/commit-analyzer',
-        // ['@semantic-release/npm', {
-        //   npmPublish: false
-        // }]
+        '@semantic-release/commit-analyzer'
       ],
-      dryRun: true
+      dryRun: true,
     });
-
-    if (result) {
-      console.log(`Bumped to version ${result.nextRelease.version}.`);
-    } else {
-      console.log('No changes for version bump.');
-    }
   } catch (err) {
-    console.error('Version bump failed with %O', err)
+    console.error('Version analysis failed with %O', err);
   }
-}
 
-init();
+  return result;
+};
+
+const writeVersion = (filePath, version) => {
+  if ((typeof filePath === 'string' && filePath !== '') &&
+    (typeof version === 'string' && version !== '')
+  ) {
+    fs.readFile(filePath, (err, data) => {
+      if (err) throw err;
+
+      let packageJsonObj = JSON.parse(data);
+      packageJsonObj.version = version;
+      packageJsonObj = JSON.stringify(packageJsonObj, null, '  ');
+
+      fs.writeFile(filePath, packageJsonObj, (err) => {
+        if (err) throw err;
+      });
+    });
+  } else {
+    throw new Error('Invalid file path or version.');
+  }
+};
+
+const bumpVersion = () => {
+  getNextVersion().then((result) => {
+    if (result) {
+      const version = result.nextRelease.version;
+
+      console.info(`Next version: ${version}`);
+
+      try {
+        console.info('Write version to package.json');
+        writeVersion('./package.json', version);
+      } catch(err) {
+        console.error('Writing version to package.json failed with %O', err)
+      }
+    } else {
+      console.info('No changes for version bump.');
+    }
+  }).catch((err) => {
+    console.error('Version bump failed with %O', err);
+  });
+};
+
+bumpVersion();
