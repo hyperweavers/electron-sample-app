@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.1](https://github.com/hyperweavers/electron-sample-app/compare/v2.2.0...v2.2.1) (2020-09-07)
+
+
+### Bug Fixes
+
+* **release:** use filenames as is n release config ([258759f](https://github.com/hyperweavers/electron-sample-app/commit/258759f3168858a01e696c9693e2cb89829bc73e))
+
 # [2.2.0](https://github.com/hyperweavers/electron-sample-app/compare/v2.1.1...v2.2.0) (2020-09-07)
 
 
