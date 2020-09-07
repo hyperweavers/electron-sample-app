@@ -1,5 +1,17 @@
 # Changelog
 
+# [2.1.0](https://github.com/hyperweavers/electron-sample-app/compare/v2.0.1...v2.1.0) (2020-09-07)
+
+
+### Bug Fixes
+
+* **release:** add dry run to bump version script ([a712a23](https://github.com/hyperweavers/electron-sample-app/commit/a712a2380d93a321e211bd64f338ff29b08d7a71))
+
+
+### Features
+
+* **release:** bump version with custom script to update package.json ([d0cdf96](https://github.com/hyperweavers/electron-sample-app/commit/d0cdf96ac093a8fedfc8d0976f724c13766f40ac))
+
 ## [1.9.2](https://github.com/hyperweavers/electron-sample-app/compare/v1.9.1...v1.9.2) (2020-08-31)
 
 
