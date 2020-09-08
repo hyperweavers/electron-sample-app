@@ -50,7 +50,7 @@ jobs:
       - name: Build application
         run: npm run make
 
-      - name: Upload build artifact(s)
+      - name: Upload build artifacts
         uses: actions/upload-artifact@v2
         if: ${{ success() }}
         with:
@@ -82,7 +82,7 @@ jobs:
         with:
           node-version: ${{ matrix.node_version }}
 
-      - name: Install Linux package(s)
+      - name: Install Linux packages
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends rename
@@ -104,13 +104,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Download build artifact(s)
+      - name: Download build artifacts
         uses: actions/download-artifact@v2
         if: ${{ success() }}
         with:
           name: binaries
 
-      - name: Copy artifact(s) to one place
+      - name: Copy artifacts to one place
         run: |
           mkdir ./out/binaries
           find ./out/ -regex ".*\.\(exe\|deb\|rpm\|dmg\|zip\)" -exec cp {} ./out/binaries \;
@@ -141,9 +141,7 @@ jobs:
           gpg --pinentry-mode=loopback -u "$GPG_BINARIES_SIGNING_KEY_FINGERPRINT" --passphrase "$GPG_BINARIES_SIGNING_KEY_PASSPHRASE" --armor --output SHA256SUMS.gpg --detach-sig SHA256SUMS
           gpg --verify SHA256SUMS.gpg SHA256SUMS
           shasum -a 256 -c SHA256SUMS || true
-          cat SHA256SUMS
-          cat SHA256SUMS.gpg
-          gpg --delete-secret-keys "$GPG_BINARIES_SIGNING_KEY_PASSPHRASE"
+          gpg --delete-secret-keys "$GPG_BINARIES_SIGNING_KEY_FINGERPRINT"
 
       - name: Release application
         env:
