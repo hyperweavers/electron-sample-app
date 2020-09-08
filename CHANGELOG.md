@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/hyperweavers/electron-sample-app/compare/v2.3.0...v2.4.0) (2020-09-08)
+
+
+### Features
+
+* **release:** use plain key fingerprints without base64 encoding ([36a0e3e](https://github.com/hyperweavers/electron-sample-app/commit/36a0e3e46a5ddde79c13dc2d8bad7296511fe900))
+
 # [2.3.0](https://github.com/hyperweavers/electron-sample-app/compare/v2.2.2...v2.3.0) (2020-09-08)
 
 
