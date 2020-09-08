@@ -118,23 +118,33 @@ jobs:
           rename -v "s/[^\/]+\./$( cat ../../.release )./" *
           rm ../../.release
 
-      - name: Configure GPG key
+      - name: Configure GPG keys
         env:
-          GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
+          GPG_BINARIES_SIGNING_KEY: ${{ secrets.GPG_BINARIES_SIGNING_KEY }}
+          GPG_BINARIES_SIGNING_KEY_PASSPHRASE: ${{ secrets.GPG_BINARIES_SIGNING_KEY_PASSPHRASE }}
+          GPG_BINARIES_SIGNING_KEY_FINGERPRINT: ${{ secrets.GPG_BINARIES_SIGNING_KEY_FINGERPRINT }}
+          GPG_GITHUB_SIGNING_KEY: ${{ secrets.GPG_GITHUB_SIGNING_KEY }}
+          GPG_GITHUB_SIGNING_KEY_FINGERPRINT: ${{ secrets.GPG_GITHUB_SIGNING_KEY_FINGERPRINT }}
         run: |
           mkdir -p ~/.gnupg/
-          printf "$GPG_SIGNING_KEY" | base64 --decode > ~/.gnupg/private.key
-          gpg --import ~/.gnupg/private.key
+          printf "$GPG_BINARIES_SIGNING_KEY" | base64 --decode > ~/.gnupg/bin_sign_private.key
+          printf "$GPG_GITHUB_SIGNING_KEY" | base64 --decode > ~/.gnupg/gh_sign_private.key
+          gpg --pinentry-mode=loopback --passphrase "$GPG_BINARIES_SIGNING_KEY_PASSPHRASE" --import ~/.gnupg/bin_sign_private.key
+          gpg --import ~/.gnupg/gh_sign_private.key
+          echo "default-key $GPG_GITHUB_SIGNING_KEY_FINGERPRINT" > ~/.gnupg/gpg.conf
+          cat ~/.gnupg/gpg.conf
 
-      - name: Generate, sign and verify checksum for artifact(s)
+      - name: Generate, sign and verify checksum for binaries
+        env:
+          GPG_BINARIES_SIGNING_KEY_PASSPHRASE: ${{ secrets.GPG_BINARIES_SIGNING_KEY_PASSPHRASE }}
         run: |
           cd ./out/binaries
           shasum -a 256 *.{exe,deb,rpm,dmg,zip} > SHA256SUMS || true
-          gpg --armor --output SHA256SUMS.gpg --detach-sig SHA256SUMS
+          gpg --pinentry-mode=loopback -u "$GPG_BINARIES_SIGNING_KEY_FINGERPRINT" --passphrase "$GPG_BINARIES_SIGNING_KEY_PASSPHRASE" --armor --output SHA256SUMS.gpg --detach-sig SHA256SUMS
           gpg --verify SHA256SUMS.gpg SHA256SUMS
+          shasum -a 256 -c SHA256SUMS || true
           cat SHA256SUMS
           cat SHA256SUMS.gpg
-          shasum -a 256 -c SHA256SUMS || true
 
       - name: Release application
         env:
