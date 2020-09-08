@@ -137,6 +137,7 @@ jobs:
       - name: Generate, sign and verify checksum for binaries
         env:
           GPG_BINARIES_SIGNING_KEY_PASSPHRASE: ${{ secrets.GPG_BINARIES_SIGNING_KEY_PASSPHRASE }}
+          GPG_BINARIES_SIGNING_KEY_FINGERPRINT: ${{ secrets.GPG_BINARIES_SIGNING_KEY_FINGERPRINT }}
         run: |
           cd ./out/binaries
           shasum -a 256 *.{exe,deb,rpm,dmg,zip} > SHA256SUMS || true
