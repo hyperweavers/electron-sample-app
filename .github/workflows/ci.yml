@@ -131,8 +131,10 @@ jobs:
           printf "$GPG_GITHUB_SIGNING_KEY" | base64 --decode > ~/.gnupg/gh_sign_private.key
           gpg --pinentry-mode=loopback --passphrase "$GPG_BINARIES_SIGNING_KEY_PASSPHRASE" --import ~/.gnupg/bin_sign_private.key
           gpg --import ~/.gnupg/gh_sign_private.key
-          printf "default-key $GPG_GITHUB_SIGNING_KEY_FINGERPRINT" > ~/.gnupg/gpg.conf
-          cat ~/.gnupg/gpg.conf
+          printf "default-key $GPG_GITHUB_SIGNING_KEY_FINGERPRINT" > /home/runner/.gnupg/gpg.conf
+          cat /home/runner/.gnupg/gpg.conf
+          ls ~/.gnupg/
+          ls /home/runner/.gnupg/
 
       - name: Generate, sign and verify checksum for binaries
         env:
