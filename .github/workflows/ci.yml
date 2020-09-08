@@ -131,7 +131,7 @@ jobs:
           printf "$GPG_GITHUB_SIGNING_KEY" | base64 --decode > ~/.gnupg/gh_sign_private.key
           gpg --pinentry-mode=loopback --passphrase "$GPG_BINARIES_SIGNING_KEY_PASSPHRASE" --import ~/.gnupg/bin_sign_private.key
           gpg --import ~/.gnupg/gh_sign_private.key
-          printf "default-key $(printf "$GPG_GITHUB_SIGNING_KEY_FINGERPRINT" | base64 --decode)" > /home/runner/.gnupg/gpg.conf
+          printf "default-key 0x$(printf "$GPG_GITHUB_SIGNING_KEY_FINGERPRINT" | base64 --decode)" > /home/runner/.gnupg/gpg.conf
           cat /home/runner/.gnupg/gpg.conf
           ls /home/runner/.gnupg/
 
