@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.1](https://github.com/hyperweavers/electron-sample-app/compare/v2.4.0...v2.4.1) (2020-09-08)
+
+
+### Bug Fixes
+
+* **release:** remove fallback from shasum verification ([25a7631](https://github.com/hyperweavers/electron-sample-app/commit/25a7631e63f7226faedd4166e2b6a1e88c6510b2))
+
 # [2.4.0](https://github.com/hyperweavers/electron-sample-app/compare/v2.3.0...v2.4.0) (2020-09-08)
 
 
