@@ -143,6 +143,8 @@ jobs:
           gpg -k
           gpg -K
           gpg --batch --yes --delete-key "$(printf "$GPG_BINARIES_SIGNING_KEY_FINGERPRINT" | base64 --decode)"
+          gpg -k
+          gpg -K
 
       - name: Release application
         env:
