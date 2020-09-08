@@ -124,16 +124,12 @@ jobs:
           GPG_BINARIES_SIGNING_KEY_PASSPHRASE: ${{ secrets.GPG_BINARIES_SIGNING_KEY_PASSPHRASE }}
           GPG_BINARIES_SIGNING_KEY_FINGERPRINT: ${{ secrets.GPG_BINARIES_SIGNING_KEY_FINGERPRINT }}
           GPG_GITHUB_SIGNING_KEY: ${{ secrets.GPG_GITHUB_SIGNING_KEY }}
-          GPG_GITHUB_SIGNING_KEY_FINGERPRINT: ${{ secrets.GPG_GITHUB_SIGNING_KEY_FINGERPRINT }}
         run: |
           mkdir -p ~/.gnupg/
           printf "$GPG_BINARIES_SIGNING_KEY" | base64 --decode > ~/.gnupg/bin_sign_private.key
           printf "$GPG_GITHUB_SIGNING_KEY" | base64 --decode > ~/.gnupg/gh_sign_private.key
           gpg --pinentry-mode=loopback --passphrase "$GPG_BINARIES_SIGNING_KEY_PASSPHRASE" --import ~/.gnupg/bin_sign_private.key
           gpg --import ~/.gnupg/gh_sign_private.key
-          printf "default-key 0x$(printf "$GPG_GITHUB_SIGNING_KEY_FINGERPRINT" | base64 --decode)" > /home/runner/.gnupg/gpg.conf
-          cat /home/runner/.gnupg/gpg.conf
-          ls /home/runner/.gnupg/
 
       - name: Generate, sign and verify checksum for binaries
         env:
@@ -147,6 +143,7 @@ jobs:
           shasum -a 256 -c SHA256SUMS || true
           cat SHA256SUMS
           cat SHA256SUMS.gpg
+          gpg --delete-secret-keys "$GPG_BINARIES_SIGNING_KEY_PASSPHRASE"
 
       - name: Release application
         env:
