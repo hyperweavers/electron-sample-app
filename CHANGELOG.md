@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/hyperweavers/electron-sample-app/compare/v2.2.2...v2.3.0) (2020-09-08)
+
+
+### Bug Fixes
+
+* change delete-secret-keys to delete-keys ([22fc888](https://github.com/hyperweavers/electron-sample-app/commit/22fc888fad4d73b4d13972fd162e645cd9c3df58))
+* comment binary signing key ([cc1e54e](https://github.com/hyperweavers/electron-sample-app/commit/cc1e54e44671726620818c3adf77ab5853f454d9))
+* delete keys in batch mode ([45058eb](https://github.com/hyperweavers/electron-sample-app/commit/45058eb6d165b216e93406fc468850557ac5127b))
+* encode binary signing key fingerprint to base64 format ([0f8e2ed](https://github.com/hyperweavers/electron-sample-app/commit/0f8e2edb3a219ed8760c0e31eb9f3ebdcb4272a9))
+* encode release signing key in base64 format ([6dca50f](https://github.com/hyperweavers/electron-sample-app/commit/6dca50fa9a1ee2742da543177ff3c6a2a627d7af))
+* list keys ([f747826](https://github.com/hyperweavers/electron-sample-app/commit/f747826195af818618f0ffc6015477e50835d3a7))
+* prefix '0x' before key fingerprint ([59067d6](https://github.com/hyperweavers/electron-sample-app/commit/59067d6e7175f7652bd0e3b7ce37666c17df88dc))
+* print keys after deletion ([78da5c5](https://github.com/hyperweavers/electron-sample-app/commit/78da5c55987d16882639f2505bc5c7eb1d5d4663))
+* remove binary signing key after signing ([af5aedd](https://github.com/hyperweavers/electron-sample-app/commit/af5aedd3f4f5ef474e704d2c1c6051ab0640fad6))
+* use proper key id for deletion ([fd0abf6](https://github.com/hyperweavers/electron-sample-app/commit/fd0abf6d749f102b9e9b390ca4bd1d43d570b2ad))
+* **release:** add signing fingerprint to env ([ecfad7a](https://github.com/hyperweavers/electron-sample-app/commit/ecfad7a5d199e015cb4a4604474ec915480d2292))
+* **release:** change gpg config path ([d4c1379](https://github.com/hyperweavers/electron-sample-app/commit/d4c13797353efea14066f04aedc61f91978d8040))
+* **release:** use printf instead of echo to save default signing key ([b63f4bc](https://github.com/hyperweavers/electron-sample-app/commit/b63f4bcebc6da54f298171abed2fe630d2e92e45))
+
+
+### Features
+
+* **release:** use password protected key with expiry for binaries signing ([0dff287](https://github.com/hyperweavers/electron-sample-app/commit/0dff2871128a0713794783609f1f4045f8832305))
+
 ## [2.2.2](https://github.com/hyperweavers/electron-sample-app/compare/v2.2.1...v2.2.2) (2020-09-07)
 
 
