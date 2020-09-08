@@ -120,32 +120,28 @@ jobs:
 
       - name: Configure GPG keys
         env:
-          # GPG_BINARIES_SIGNING_KEY: ${{ secrets.GPG_BINARIES_SIGNING_KEY }}
-          # GPG_BINARIES_SIGNING_KEY_PASSPHRASE: ${{ secrets.GPG_BINARIES_SIGNING_KEY_PASSPHRASE }}
+          GPG_BINARIES_SIGNING_KEY: ${{ secrets.GPG_BINARIES_SIGNING_KEY }}
+          GPG_BINARIES_SIGNING_KEY_PASSPHRASE: ${{ secrets.GPG_BINARIES_SIGNING_KEY_PASSPHRASE }}
           GPG_GITHUB_SIGNING_KEY: ${{ secrets.GPG_GITHUB_SIGNING_KEY }}
+          GPG_GITHUB_SIGNING_KEY_FINGERPRINT: ${{ secrets.GPG_GITHUB_SIGNING_KEY_FINGERPRINT }}
         run: |
           mkdir -p ~/.gnupg/
-          # printf "$GPG_BINARIES_SIGNING_KEY" | base64 --decode > ~/.gnupg/bin_sign_private.key
+          printf "$GPG_BINARIES_SIGNING_KEY" | base64 --decode > ~/.gnupg/bin_sign_private.key
           printf "$GPG_GITHUB_SIGNING_KEY" | base64 --decode > ~/.gnupg/gh_sign_private.key
-          # gpg --pinentry-mode=loopback --passphrase "$GPG_BINARIES_SIGNING_KEY_PASSPHRASE" --import ~/.gnupg/bin_sign_private.key
+          gpg --pinentry-mode=loopback --passphrase "$GPG_BINARIES_SIGNING_KEY_PASSPHRASE" --import ~/.gnupg/bin_sign_private.key
           gpg --import ~/.gnupg/gh_sign_private.key
+          printf "default-key $GPG_GITHUB_SIGNING_KEY_FINGERPRINT" > ~/.gnupg/gpg.conf
 
       - name: Generate, sign and verify checksum for binaries
-        # env:
-          # GPG_BINARIES_SIGNING_KEY_PASSPHRASE: ${{ secrets.GPG_BINARIES_SIGNING_KEY_PASSPHRASE }}
-          # GPG_BINARIES_SIGNING_KEY_FINGERPRINT: ${{ secrets.GPG_BINARIES_SIGNING_KEY_FINGERPRINT }}
+        env:
+          GPG_BINARIES_SIGNING_KEY_PASSPHRASE: ${{ secrets.GPG_BINARIES_SIGNING_KEY_PASSPHRASE }}
+          GPG_BINARIES_SIGNING_KEY_FINGERPRINT: ${{ secrets.GPG_BINARIES_SIGNING_KEY_FINGERPRINT }}
         run: |
           cd ./out/binaries
           shasum -a 256 *.{exe,deb,rpm,dmg,zip} > SHA256SUMS || true
-          # gpg --pinentry-mode=loopback -u "$(printf "$GPG_BINARIES_SIGNING_KEY_FINGERPRINT" | base64 --decode)" --passphrase "$GPG_BINARIES_SIGNING_KEY_PASSPHRASE" --armor --output SHA256SUMS.gpg --detach-sig SHA256SUMS
-          gpg --armor --output SHA256SUMS.gpg --detach-sig SHA256SUMS
+          gpg --pinentry-mode=loopback -u "$GPG_BINARIES_SIGNING_KEY_FINGERPRINT" --passphrase "$GPG_BINARIES_SIGNING_KEY_PASSPHRASE" --armor --output SHA256SUMS.gpg --detach-sig SHA256SUMS
           gpg --verify SHA256SUMS.gpg SHA256SUMS
           shasum -a 256 -c SHA256SUMS || true
-          # gpg -k
-          # gpg -K
-          # gpg --batch --yes --delete-key "$(printf "$GPG_BINARIES_SIGNING_KEY_FINGERPRINT" | base64 --decode)"
-          # gpg -k
-          # gpg -K
 
       - name: Release application
         env:
