@@ -141,7 +141,7 @@ jobs:
           shasum -a 256 *.{exe,deb,rpm,dmg,zip} > SHA256SUMS || true
           gpg --pinentry-mode=loopback -u "$GPG_BINARIES_SIGNING_KEY_FINGERPRINT" --passphrase "$GPG_BINARIES_SIGNING_KEY_PASSPHRASE" --armor --output SHA256SUMS.gpg --detach-sig SHA256SUMS
           gpg --verify SHA256SUMS.gpg SHA256SUMS
-          shasum -a 256 -c SHA256SUMS || true
+          shasum -a 256 -c SHA256SUMS
 
       - name: Release application
         env:
