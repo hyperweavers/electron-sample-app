@@ -142,7 +142,7 @@ jobs:
           shasum -a 256 -c SHA256SUMS || true
           gpg -k
           gpg -K
-          gpg --delete-secret-keys "$(printf "$GPG_BINARIES_SIGNING_KEY_FINGERPRINT" | base64 --decode)"
+          gpg --delete-key "$(printf "$GPG_BINARIES_SIGNING_KEY_FINGERPRINT" | base64 --decode)"
 
       - name: Release application
         env:
