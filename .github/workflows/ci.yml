@@ -15,8 +15,7 @@ jobs:
     strategy:
       matrix:
         node_version: [ 12.x ]
-        os: [ ubuntu-latest]
-        #, windows-latest, macos-latest ]
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
 
     steps:
       - name: Checkout branch
@@ -55,7 +54,6 @@ jobs:
         if: ${{ success() }}
         with:
           name: binaries
-          # path: ./out/artifacts/*
           path: |
             ./.release
             ./out/make/**/*.exe
