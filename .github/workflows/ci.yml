@@ -66,7 +66,7 @@ jobs:
     if: ${{ success() }}
     needs: build
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     strategy:
       matrix:
         node_version: [ 12.x ]
@@ -136,10 +136,10 @@ jobs:
           GPG_BINARIES_SIGNING_KEY_ID: ${{ secrets.GPG_BINARIES_SIGNING_KEY_ID }}
         run: |
           cd ./out/binaries
-          shasum -a 256 *.{exe,deb,rpm,dmg,zip} > SHA256SUMS || true
+          sha256sum *.{exe,deb,rpm,dmg,zip} > SHA256SUMS || true
           gpg --pinentry-mode=loopback -u "$GPG_BINARIES_SIGNING_KEY_ID" --passphrase "$GPG_BINARIES_SIGNING_KEY_PASSPHRASE" --armor --output SHA256SUMS.gpg --detach-sig SHA256SUMS
           gpg --verify SHA256SUMS.gpg SHA256SUMS
-          shasum -a 256 -c SHA256SUMS
+          sha256sum -c SHA256SUMS
 
       - name: Release application
         env:
