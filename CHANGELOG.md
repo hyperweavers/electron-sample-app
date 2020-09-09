@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.2](https://github.com/hyperweavers/electron-sample-app/compare/v2.5.1...v2.5.2) (2020-09-09)
+
+
+### Bug Fixes
+
+* **release:** use sha256sum instead of shasum ([f34f818](https://github.com/hyperweavers/electron-sample-app/commit/f34f818ae200735a59fa00369de1d3bd3efb27ce))
+
 ## [2.5.1](https://github.com/hyperweavers/electron-sample-app/compare/v2.5.0...v2.5.1) (2020-09-09)
 
 
