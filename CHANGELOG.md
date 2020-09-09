@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/hyperweavers/electron-sample-app/compare/v2.4.1...v2.5.0) (2020-09-09)
+
+
+### Features
+
+* **release:** use key instead of fingerprint in ci ([2d9c03f](https://github.com/hyperweavers/electron-sample-app/commit/2d9c03fb1fa2bd8e565fb76e8f81b99a4c7dff5a))
+
 ## [2.4.1](https://github.com/hyperweavers/electron-sample-app/compare/v2.4.0...v2.4.1) (2020-09-08)
 
 
