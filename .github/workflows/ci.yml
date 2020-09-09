@@ -6,6 +6,7 @@ on:
       - stable
       - alpha
       - beta
+      - rc
 
 jobs:
   build:
@@ -63,7 +64,6 @@ jobs:
             ./out/make/**/*.zip
 
   release:
-    if: ${{ success() }}
     needs: build
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -104,11 +104,10 @@ jobs:
 
       - name: Download build artifacts
         uses: actions/download-artifact@v2
-        if: ${{ success() }}
         with:
           name: binaries
 
-      - name: Copy artifacts to one place
+      - name: Copy artifacts to one place and rename them
         run: |
           mkdir ./out/binaries
           find ./out/ -regex ".*\.\(exe\|deb\|rpm\|dmg\|zip\)" -exec cp {} ./out/binaries \;
