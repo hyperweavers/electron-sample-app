@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.1](https://github.com/hyperweavers/electron-sample-app/compare/v2.5.0...v2.5.1) (2020-09-09)
+
+
+### Bug Fixes
+
+* **release:** clean up ci workflow ([bddb090](https://github.com/hyperweavers/electron-sample-app/commit/bddb09021388279ab2f9fcec132a30a7f20b067b))
+
 # [2.5.0](https://github.com/hyperweavers/electron-sample-app/compare/v2.4.1...v2.5.0) (2020-09-09)
 
 
