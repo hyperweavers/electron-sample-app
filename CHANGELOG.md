@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0-rc.1](https://github.com/hyperweavers/electron-sample-app/compare/v2.5.2...v2.6.0-rc.1) (2020-09-09)
+
+
+### Features
+
+* add rc release config ([d133c9a](https://github.com/hyperweavers/electron-sample-app/commit/d133c9ae49b2b3cb36186c5fdf5154a9e86ad24f))
+
 ## [2.5.2](https://github.com/hyperweavers/electron-sample-app/compare/v2.5.1...v2.5.2) (2020-09-09)
 
 
